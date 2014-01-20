@@ -1,0 +1,72 @@
+div {
+
+}
+
+input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: #F3F3F3;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#fi-beer-desktop {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#fi-beer-graph {
+    position: absolute;
+    width: 240px;
+    height: 200px;
+    top: 10px;
+    left: 10px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#fi-beer-values {
+    position: absolute;
+    width: 120px;
+    height: 185px;
+    background-color: #F3F3F3;
+    top: 10px;
+    right: 10px;
+    padding-top: 15px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#fi-beer-controls {
+    position: absolute;
+    width: 340px;
+    height: 20px;
+    background-color: #F3F3F3;
+    bottom: 10px;
+    left: 10px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.fi-beer-pair {
+    float: none;
+    width: 80px;
+    background-color: pink;
+    border-stylye: solid;
+    padding-left: 20px;
+}
+
+.fi-beer-label {
+    margin: 4px;
+    float: left;
+}
+
+.fi-beer-value {
+    margin: 4px;
+    float: right;
+}

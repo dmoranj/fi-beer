@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="application/javascript" src="scripts/lib/jquery-2.0.3.min.js"></script>
+    <script type="application/javascript" src="scripts/src/beerControl.js"></script>
+    <link rel="stylesheet" href="stylesheets/fi-beer.css" />
+</head>
+<body onLoad="init()">
+<div id="fi-beer-desktop">
+    <canvas id="fi-beer-graph"  width="240" height="200">
+
+    </canvas>
+    <div id="fi-beer-values">
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T01: </div><div class="fi-beer-value" id="temperature0">n/a</div>
+        </div>
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T02: </div><div class="fi-beer-value" id="temperature1">n/a</div>
+        </div>
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T03: </div><div class="fi-beer-value" id="temperature2">n/a</div>
+        </div>
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T04: </div><div class="fi-beer-value" id="temperature3">n/a</div>
+        </div>
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T05: </div><div class="fi-beer-value" id="temperature4">n/a</div>
+        </div>
+        <div class="fi-beer-pair">
+            <div class="fi-beer-label">T06: </div><div class="fi-beer-value" id="temperature5">n/a</div>
+        </div>
+    </div>
+    <div id="fi-beer-controls">
+        Min. : <input id="min-temperature" type="text" size="2"> Max. : <input id="max-temperature" type="text" size="2" > <input type="button" value="Update Limits">
+    </div>
+</div>
+</body>
+</html>
