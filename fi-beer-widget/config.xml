@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The Template core element. This element is mandatory -->
+<Template xmlns="http://wirecloud.conwet.fi.upm.es/ns/template#">
+
+    <!-- Catalog.ResourceDescription element. This element defines the core metadata of the widget -->
+    <Catalog.ResourceDescription>
+        <!-- Vendor: Company that distributes the widget -->
+        <Vendor>TID Beer Factory</Vendor>
+        <!-- Name: Name of the widget -->
+        <Name>fi-beer</Name>
+        <!-- Version: Current widget version number-->
+        <Version>0.1</Version>
+        <!-- DisplayName: Name shown in the UI of the widget -->
+        <DisplayName>FIWARE Beer Factory Management</DisplayName>
+        <!-- Author: Widget developer(s) -->
+        <Author>Daniel Moran</Author>
+        <!-- Mail: Developer's email address -->
+        <Mail>dmoranj@tid.es</Mail>
+        <!-- Description: Full widget description to be shown in the catalogue -->
+        <Description>Beer Factory control panel to follow the fermentation process for homebrewing</Description>
+        <!-- Absolute or template-relative path to the image shown in the catalogue -->
+        <ImageURI>images/catalogue.png</ImageURI>
+        <!-- Absolute or template-relative path to the image to be used in smartphones -->
+        <iPhoneImageURI>images/catalogue.png</iPhoneImageURI>
+        <!-- Absolute or template-relative path to the widget's documentation -->
+        <WikiURI>https://github.com/dmoranj/fi-beer/tree/master</WikiURI>
+
+        <Requirements>
+            <Feature name="NGSI"/>
+        </Requirements>
+
+    </Catalog.ResourceDescription>
+
+    <!-- Platform.Preferences element. It defines user preferences -->
+    <Platform.Preferences>
+        <Preference name="ngsi_server" type="text" description="NGSI Server where the lamp post info is located" label="NGSI Server" default="http://130.206.82.80:1026/" />
+    </Platform.Preferences>
+
+    <!-- Platform.StateProperties element. It defines user preferences -->
+    <Platform.StateProperties>
+    </Platform.StateProperties>
+
+    <!-- Platform.Wiring element. It defines both the widget inputs and outputs -->
+    <Platform.Wiring>
+    </Platform.Wiring>
+
+    <!-- Platform.Link element. It binds the template with the actual widget's source code. -->
+    <Platform.Link>
+        <!-- XHTML element. It has the href attribute that links to the source code of the widget. -->
+        <!--                contenttype and cacheable attributes are optional -->
+        <XHTML href="index.html"/>
+
+    </Platform.Link>
+
+    <!-- Platform.Rendering element. It specifies the default width and height of the widget -->
+    <Platform.Rendering width="6" height="24"/>
+
+</Template>
