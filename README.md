@@ -4,6 +4,8 @@ Fi-Beer
 # Overview
 FI-Beer is a [FI-Ware](http://edu.fi-ware.eu/course/index.php) software prototype to manage the beer fermentation of a homebrewing process with a group of sensors controlled with a Debian Linux PC and an [Arduino One board](http://arduino.cc/en/Main/arduinoBoardUno). Below you can find a diagram of all the system components and a brief explanation of their functions. The following sections will detail how the components were connected and all the software and hardware installed, bottom-up.
 
+![FI-Beer overview](img/Overview.png)
+
 # Detailed description
 
 ## Fermentation instrumentation and hardware connection
