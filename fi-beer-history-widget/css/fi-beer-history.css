@@ -1,0 +1,28 @@
+div {
+
+}
+
+input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: #F3F3F3;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#fi-beer-history {
+    position: absolute;
+    border-style: solid;
+    border-width: 1px;
+    width: 95%;
+    height: 95%;
+}
+
+#fi-beer-graph {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-style: solid;
+    border-width: 1px;
+}

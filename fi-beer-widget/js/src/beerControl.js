@@ -1,42 +1,23 @@
 var BeerManager = (function() {
-
-    function calculateColor(id) {
-        if (document.getElementById("temperature" + id).textContent == "n/a") {
-            return "rgba(0,0,255,1)";
-        } else {
-            var value = Number(document.getElementById("temperature" + id).textContent).toFixed(1),
-                max = Number(document.getElementById("max-temperature").value),
-                min = Number(document.getElementById("min-temperature").value),
-                avg = (max + min)/2,
-                interval = max - min,
-                difference = Math.abs(value - avg);
-
-            if (difference < interval /4) {
-                var grayLevel = Math.round((difference / (interval/4)) * 255);
-
-                return "rgba(" + grayLevel + ", 255, " + grayLevel + ",1)";
-
-            } else {
-                var grayLevel = Math.round(((difference - (interval/4))/ (interval/4)) * 255);
-
-                if (grayLevel > 255) {
-                    grayLevel = 0;
-                } else{
-                    grayLevel = 255 - grayLevel;
-                }
-
-                return "rgba(255, " + grayLevel + "," + grayLevel + ",1)";
-            }
-        }
-    }
+    var max = 24,
+        min = 18;
 
     function updateRepresentation() {
+        var width = document.getElementById("fi-beer-desktop").clientWidth - document.getElementById("fi-beer-values").clientWidth -20,
+            height = document.getElementById("fi-beer-desktop").clientHeight - document.getElementById("fi-beer-controls").clientHeight - 20,
+            radius = (height < width)?(height/2)*0.9:(width/2)*0.9,
+            circleX = width/2,
+            circleY = height/2;
+
+        document.getElementById("fi-beer-graph").width = width;
+        document.getElementById("fi-beer-graph").height = height;
+
         var c=document.getElementById("fi-beer-graph");
         var ctx=c.getContext("2d");
 
         ctx.save();
         ctx.beginPath();
-        ctx.arc(120,100,80,0,2*Math.PI);
+        ctx.arc(circleX,circleY,radius,0,2*Math.PI);
         ctx.fillStyle = "#FFFFFF";
         ctx.lineWidth=5;
         ctx.fill();
@@ -46,44 +27,44 @@ var BeerManager = (function() {
         var circles = [
             {
                 id: 0,
-                x: 120,
-                y: 20,
+                x: circleX,
+                y: circleY - radius,
                 color: 'rgba(255,0,0, 1)'
             },
             {
                 id: 1,
-                x: 40,
-                y: 100,
+                x: circleX + radius,
+                y: circleY,
                 color: 'rgba(255,0,0, 1)'
             },
             {
                 id: 2,
-                x: 120,
-                y: 180,
+                x: circleX,
+                y: circleY + radius,
                 color: 'rgba(0,255,0, 1)'
             },
             {
                 id: 3,
-                x: 200,
-                y: 100,
+                x: circleX - radius,
+                y: circleY,
                 color: 'rgba(255,180,180, 1)'
             },
             {
                 id: 3,
-                x: 120,
-                y: 100,
+                x: circleX,
+                y: circleY,
                 color: 'rgba(180,255,180, 1)'
             }
         ];
 
         for (var c in circles) {
-            var grd=ctx.createRadialGradient(circles[c].x,circles[c].y,0,circles[c].x,circles[c].y, 80);
-            grd.addColorStop(0, calculateColor(circles[c].id));
+            var grd=ctx.createRadialGradient(circles[c].x,circles[c].y,0,circles[c].x,circles[c].y, radius);
+            grd.addColorStop(0, calculateColor(circles[c].id, max, min));
             grd.addColorStop(1,'rgba(255,255,255, 0)');
             ctx.fillStyle=grd;
 
             ctx.beginPath();
-            ctx.arc(circles[c].x, circles[c].y,80,0,2*Math.PI);
+            ctx.arc(circles[c].x, circles[c].y,radius,0,2*Math.PI);
             ctx.fill();
         }
 
@@ -129,16 +110,24 @@ var BeerManager = (function() {
                 "isPattern": "false",
                 "id": "CubaDani"
             }];
-
         connection.query(entities, ["temperature0", "temperature1", "temperature2", "temperature3", "temperature4", "temperature5"], options);
     }
 
     function init() {
         updateRepresentation();
         updateSensorData();
+        document.getElementById("max-temperature").value = max;
+        document.getElementById("min-temperature").value = min;
+    }
+
+    function updateValues() {
+        max = Number(document.getElementById("max-temperature").value);
+        min = Number(document.getElementById("min-temperature").value);
     }
 
     return {
-        init: init
+        init: init,
+        updateRepresentation: updateRepresentation,
+        updateValues: updateValues
     }
 })();

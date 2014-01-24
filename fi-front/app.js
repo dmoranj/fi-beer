@@ -28,6 +28,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/history', routes.history);
 app.post('/queryContext', ngsi.query);
 
 http.createServer(app).listen(app.get('port'), function(){

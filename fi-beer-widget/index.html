@@ -2,12 +2,16 @@
 <html>
 <head>
     <script type="application/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
+    <script type="application/javascript" src="js/src/beerUtils.js"></script>
+
     <script type="application/javascript" src="js/src/beerControl.js"></script>
     <link rel="stylesheet" href="css/fi-beer.css" />
+    <link rel='stylesheet' media='screen and (max-width: 500px)' href='css/fi-beer-small.css' />
+
 </head>
-<body onLoad="BeerManager.init()">
+<body onLoad="BeerManager.init()" onresize="BeerManagement.updateRepresentation()">
 <div id="fi-beer-desktop">
-    <canvas id="fi-beer-graph"  width="240" height="200">
+    <canvas id="fi-beer-graph">
 
     </canvas>
     <div id="fi-beer-values">
@@ -31,7 +35,11 @@
         </div>
     </div>
     <div id="fi-beer-controls">
-        Min. : <input id="min-temperature" type="text" size="2"> Max. : <input id="max-temperature" type="text" size="2" > <input type="button" value="Update Limits">
+        <div class="fi-beer-label">Min. :</div>
+        <div class="fi-beer-label"><input id="min-temperature" type="text" size="2"></div>
+        <div class="fi-beer-label">Max. :</div>
+        <div class="fi-beer-label"><input id="max-temperature" type="text" size="2"></div>
+        <div class="fi-beer-label"><input type="button" value="Update Limits" onClick="BeerManager.updateValues()"></div>
     </div>
 </div>
 </body>

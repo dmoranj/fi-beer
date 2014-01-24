@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="application/javascript" src="scripts/lib/jquery-2.0.3.min.js"></script>
+    <script type="application/javascript" src="scripts/lib/Chart.min.js"></script>
+    <script type="application/javascript" src="scripts/src/beerUtils.js"></script>
+    <script type="application/javascript" src="scripts/src/beerHistory.js"></script>
+
+    <link rel="stylesheet" href="stylesheets/fi-beer-history.css" />
+    <link rel="stylesheet" media="screen and (max-width: 700px)" href="stylesheets/fi-beer-history-small.css" />
+    <link rel="stylesheet" media="screen and (min-width: 701px) and (max-width: 900px)" href="stylesheets/fi-beer-history-medium.css" />
+    <link rel="stylesheet" media="screen and (min-width: 901px)" href="stylesheets/fi-beer-history-big.css" />
+</head>
+<body onLoad="init()" onresize="updateCharts()">
+<div id="fi-beer-history">
+    <canvas id="fi-beer-graph">
+
+    </canvas>
+</div>
+</body>
+</html>
