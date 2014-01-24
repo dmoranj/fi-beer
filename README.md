@@ -6,6 +6,11 @@ FI-Beer is a [FI-Ware](http://edu.fi-ware.eu/course/index.php) software prototyp
 
 ![FI-Beer overview](img/Overview.png)
 
+FI-Beer makes use of several FI-Ware building blocks, all of them deployed in the FI-Lab testbed:
+* [Context Broker](http://catalogue.fi-ware.eu/enablers/publishsubscribe-context-broker-orion-context-broker): a data concentrator for all the measures, manages subscriptions and data access. Needs some scripting in order to integrate it with Cosmos (NGSI2Cosmos script that can be found on the [FI-Ware Live Demo App](https://github.com/telefonicaid/fiware-livedemoapp) ).  
+* Wirecloud: Front End based on HTML5+JS widget composing, offers some libraries to integrate with the CB. 
+* Cosmos: Big Data platform to store and analyze measure data.
+
 # Detailed description
 
 ## Fermentation instrumentation and hardware connection
