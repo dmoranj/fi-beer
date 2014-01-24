@@ -6,35 +6,34 @@
     <!-- Catalog.ResourceDescription element. This element defines the core metadata of the widget -->
     <Catalog.ResourceDescription>
         <!-- Vendor: Company that distributes the widget -->
-        <Vendor>TID Beer Factory</Vendor>
+        <Vendor>TID Beer Factory History</Vendor>
         <!-- Name: Name of the widget -->
-        <Name>fi-beer</Name>
+        <Name>fi-beer-history</Name>
         <!-- Version: Current widget version number-->
-        <Version>0.2</Version>
+        <Version>0.1</Version>
         <!-- DisplayName: Name shown in the UI of the widget -->
-        <DisplayName>FIWARE Beer Factory Management</DisplayName>
+        <DisplayName>FIWARE Beer Factory History Display</DisplayName>
         <!-- Author: Widget developer(s) -->
         <Author>Daniel Moran</Author>
         <!-- Mail: Developer's email address -->
         <Mail>dmoranj@tid.es</Mail>
         <!-- Description: Full widget description to be shown in the catalogue -->
-        <Description>Beer Factory control panel to follow the fermentation process for homebrewing</Description>
+        <Description>Beer Factory history charts to follow long time fermentation</Description>
         <!-- Absolute or template-relative path to the image shown in the catalogue -->
         <ImageURI>images/catalogue.png</ImageURI>
         <!-- Absolute or template-relative path to the image to be used in smartphones -->
         <iPhoneImageURI>images/catalogue.png</iPhoneImageURI>
         <!-- Absolute or template-relative path to the widget's documentation -->
-        <WikiURI>https://github.com/dmoranj/fi-beer/tree/master</WikiURI>
+        <WikiURI>https://github.com/dmoranj/fi-beer</WikiURI>
 
         <Requirements>
-            <Feature name="NGSI"/>
         </Requirements>
 
     </Catalog.ResourceDescription>
 
     <!-- Platform.Preferences element. It defines user preferences -->
     <Platform.Preferences>
-        <Preference name="ngsi_server" type="text" description="NGSI Server where the lamp post info is located" label="NGSI Server" default="http://130.206.82.80:1026/" />
+        <Preference name="backendHost" type="text" description="Host containing the Big Data backend" label="Backend Server" default="http://130.206.82.80:80" />
     </Platform.Preferences>
 
     <!-- Platform.StateProperties element. It defines user preferences -->
@@ -54,6 +53,6 @@
     </Platform.Link>
 
     <!-- Platform.Rendering element. It specifies the default width and height of the widget -->
-    <Platform.Rendering width="6" height="24"/>
+    <Platform.Rendering width="8" height="28"/>
 
 </Template>
