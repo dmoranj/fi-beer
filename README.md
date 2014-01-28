@@ -23,6 +23,66 @@ All the sensors data pins were connected to the analogical data inputs of an Ard
 
 All the sensor reading is done in a Python script that reads the sensor data from the Arduino and sends it to the Context Broker using the [NGSI Protocol](http://forge.fi-ware.eu/plugins/mediawiki/wiki/fiware/index.php/OMA_NGSI_10). The Python-to-Arduino connection is created using [Nanpy](https://github.com/nanpy). 
 
+### Step by step
+
+#### Installing Nanpy
+
+1. Download Nanpy from the Github account.
+
+```
+git clone git@github.com:nanpy/nanpy.git
+```
+
+2. From the root directory of nanpy, execute the installation script:
+
+```
+python setup.py install
+```
+
+3. Connect the Arduino board to the linux host.
+4. Upload the firmware to the Arduino Uno board. You might need to execute this step again if the computer is rebooted or the Arduino disconnected (not exactly sure why, but it probably have to do with the device id). Export the following variable `BOARD=uno` and from the `firmware/Nanpy` folder execute:
+
+```
+make upload
+```
+
+If your Arduino is not a Uno, change the `BOARD` variable accordingly.
+
+Now the board is ready to be used from Python.
+
+#### Reading the sensors from the Python script
+
+Arduino pins can be accessed from Python using the Nanpy library you just installed. In order to do so, first of all, you have to import the library:
+
+```
+from nanpy import Arduino
+```
+
+The Arduino class represents the basic I/O operations of the Arduino board. It contains methods to:
+
+* Define the type of I/O of the pin: `Arduino.pinMode(pin, Arduino.INPUT)`
+* Read from the Inputs: `Arduino.analogRead(pin)`
+* Write to the outputs: `Arduino.digitalWrite(13, Arduino.HIGH)`
+
+You can also change the device where the Nanpy expects the Arduino by using the `serial_manager` module:
+
+```
+serial_manager.connect('/dev/ttyACM0')
+```
+
+The library provides more advanced modules, but only the simplest Arduino access will be used in this prototype. When you are connecting your sensors to the pins, remember that only a restricted set of pins is capable of analog input.
+
+The temperature sensor reading is defined in terms of voltage; the exact formula to convert from voltage readings to celsius degrees depends on the particular sensor model. You can find the one for the LM35 in the code.
+
+The control loop is currently implemented as a simple infinite loop with sleep intervales betweeen iterations.
+
+#### Developing the NGSI Client
+
+The Context Broker, where the measures will be aggregated and distributed, listens for requests following the [NGSI protocol](http://technical.openmobilealliance.org/Technical/release_program/NGSI_v1_0.aspx). In order to communicate with this component, a NGSI client was developed. The NGSI protocol defines several resources and operations, but the client only use a very restricted set:
+
+* Appending a new measure for a context. 
+* Getting measures for a particular context (not currently in use in the prototype but expected).
+
 ## The Context Broker
 
 The [Orion Context Broker](https://forge.fi-ware.eu/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe_Broker_-_Orion_Context_Broker_-_User_and_Programmers_Guide#Query_Context_operation) was used as the central data node of the system. All the data of the sensors is sent to Orion who, in turn, send it to all its suscribers and can be queried from the frontend systems to get up-to-date information of any of the measures.
