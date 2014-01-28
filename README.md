@@ -83,11 +83,21 @@ The Context Broker, where the measures will be aggregated and distributed, liste
 * Appending a new measure for a context. 
 * Getting measures for a particular context (not currently in use in the prototype but expected).
 
+The NGSI protocol is a REST protocol that accepts both XML and JSON payloads. In this case, all the communications were stablished using the `requests` HTTP library with JSON payloads (using the default `json` python library).  
+ 
 ## The Context Broker
 
 The [Orion Context Broker](https://forge.fi-ware.eu/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe_Broker_-_Orion_Context_Broker_-_User_and_Programmers_Guide#Query_Context_operation) was used as the central data node of the system. All the data of the sensors is sent to Orion who, in turn, send it to all its suscribers and can be queried from the frontend systems to get up-to-date information of any of the measures.
 
-For the prototype, we used a dedicated cloud instance in [FI-Lab](http://lab.fi-ware.eu/), that has a preinstalled Context Broker service. 
+For the prototype, we used a dedicated cloud instance in [FI-Lab](http://lab.fi-ware.eu/), that has a preinstalled Context Broker service (the image name is `orion-psb-image-R3.2`). The service is disabled by default, so make sure you activate it with:
+
+```
+service context-broker start
+```
+
+before starting to use the broker. It should start listening on port 1026. Remember to open this port in the Security Group. The virtual machine also comes with its own MongoDB instance, that you can use to check the information currently stored in your broker.
+
+NOTE: There is currently a bug in the Context Broker that ocasionally corrupts the executable file. It may be a good idea to copy the executable file to a safe place in order to restore it if there is any trouble with the service (your other option is to reinstall it if you notice any weird behavior). 
 
 ## Wirecloud Management Widget
 The Front End of the system was designed as a series of widgets deployed in FI-Ware's Mashup Platform: [Wirecloud](http://conwet.fi.upm.es/wirecloud/). The widgets were deployed in the FI-Lab's marketplace and composed in a new workspace.
